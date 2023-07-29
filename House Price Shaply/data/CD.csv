@@ -1,0 +1,101 @@
+job_support,itemsets,job_length,p2_pass_support,p2_pass_length,p2_self_support,p2_self_length,p1_self_support,p1_self_length
+0.42857142857142855,frozenset({'Python'}),1,0.8335854765506808,1.0,0.9208955223880597,1.0,0.8386243386243386,1.0
+0.2,frozenset({'SQL'}),1,0.8366111951588502,1.0,0.9582089552238806,1.0,0.9071134626690183,1.0
+0.2,frozenset({'ETL'}),1,,,0.6014925373134329,1.0,0.42592592592592593,1.0
+0.17142857142857143,frozenset({'Azure'}),1,0.049924357034795766,1.0,0.33134328358208953,1.0,0.21898883009994122,1.0
+0.14285714285714285,frozenset({'Amazon Redshift'}),1,0.642965204236006,1.0,0.3805970149253731,1.0,0.3959435626102293,1.0
+0.08571428571428572,frozenset({'AWS'}),1,0.21633888048411498,1.0,0.5522388059701493,1.0,0.48324514991181655,1.0
+0.08571428571428572,frozenset({'Data Science'}),1,0.2102874432677761,1.0,0.15223880597014924,1.0,0.06290417401528513,1.0
+0.08571428571428572,"frozenset({'Python', 'ETL'})",2,,,0.5791044776119403,2.0,0.37771898883009997,2.0
+0.08571428571428572,"frozenset({'Amazon Redshift', 'ETL'})",2,,,0.2582089552238806,2.0,0.20605526161081716,2.0
+0.08571428571428572,frozenset({'Power BI'}),1,,,0.32686567164179103,1.0,0.2777777777777778,1.0
+0.08571428571428572,frozenset({'Machine Learning'}),1,0.1059001512859304,1.0,0.4343283582089552,1.0,0.33127572016460904,1.0
+0.08571428571428572,frozenset({'Docker'}),1,0.09682299546142209,1.0,0.26119402985074625,1.0,0.13521457965902411,1.0
+0.08571428571428572,"frozenset({'SQL', 'Python'})",2,0.7428139183055976,2.0,0.908955223880597,2.0,0.8062904174015285,2.0
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Data Warehousing', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Amazon Redshift', 'ETL'})",3,,,0.14328358208955225,3.0,0.0837742504409171,3.0
+0.05714285714285714,"frozenset({'Amazon Redshift', 'ETL', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Amazon Redshift', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Data Engineer', 'ETL'})",3,,,0.13880597014925372,3.0,0.07407407407407407,3.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Data Engineer'})",3,,,0.08059701492537313,3.0,0.030570252792475015,3.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Data Engineer', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Data Engineer', 'ETL'})",3,,,0.24776119402985075,3.0,0.12110523221634333,3.0
+0.05714285714285714,"frozenset({'Data Engineer', 'ETL', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Data Engineer', 'Tech Lead'})",3,0.01059001512859304,3.0,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'ETL'})",3,,,0.0880597014925373,3.0,0.03321575543797766,3.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Amazon Redshift'})",3,,,0.05522388059701493,3.0,0.019400352733686066,3.0
+0.05714285714285714,"frozenset({'Spark', 'ETL', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'SQL', 'Machine Learning', 'Python'})",3,0.09984871406959153,3.0,0.4298507462686567,3.0,0.3218694885361552,3.0
+0.05714285714285714,"frozenset({'Data Engineer', 'Data Warehousing', 'Amazon Redshift', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Amazon Redshift', 'ETL', 'Data Engineer'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Amazon Redshift', 'Data Engineer'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Spark', 'Amazon Redshift', 'Tech Lead'})",6,,,,,,
+0.05714285714285714,"frozenset({'Data Engineer', 'Agile', 'Amazon Redshift', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Amazon Redshift', 'ETL', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Amazon Redshift', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'Amazon Redshift', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Amazon Redshift', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Amazon Redshift', 'ETL'})",3,,,0.0880597014925373,3.0,0.04879482657260435,3.0
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Data Warehousing', 'ETL', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",6,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Tech Lead'})",2,0.01059001512859304,2.0,,,,
+0.05714285714285714,"frozenset({'Data Science', 'Docker', 'AWS'})",3,0.012102874432677761,3.0,0.041791044776119404,3.0,0.0102880658436214,3.0
+0.05714285714285714,"frozenset({'Python', 'AWS Solutions Architecture', 'ETL'})",3,,,0.010447761194029851,3.0,,
+0.05714285714285714,"frozenset({'Agile', 'Amazon Redshift', 'Data Engineer'})",3,,,0.07164179104477612,3.0,0.040858318636096416,3.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Amazon Redshift', 'Agile'})",3,,,0.019402985074626865,3.0,0.010582010582010581,3.0
+0.05714285714285714,"frozenset({'Agile', 'Amazon Redshift', 'ETL'})",3,,,0.05522388059701493,3.0,0.03233392122281011,3.0
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Amazon Redshift'})",3,,,0.04328358208955224,3.0,0.020870076425631982,3.0
+0.05714285714285714,"frozenset({'Agile', 'Amazon Redshift', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Data Engineer', 'Agile'})",3,,,0.028358208955223882,3.0,0.015873015873015872,3.0
+0.05714285714285714,"frozenset({'Agile', 'Data Engineer', 'ETL'})",3,,,0.08656716417910448,3.0,0.04438565549676661,3.0
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Data Engineer'})",3,,,0.05373134328358209,3.0,0.02704291593180482,3.0
+0.05714285714285714,"frozenset({'Data Engineer', 'Amazon Redshift', 'Tech Lead'})",3,0.015128593040847202,3.0,,,,
+0.05714285714285714,"frozenset({'Agile', 'Data Engineer', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile'})",3,,,0.03283582089552239,3.0,0.017930629041740153,3.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Agile'})",3,,,0.019402985074626865,3.0,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'ETL'})",3,,,0.05970149253731343,3.0,0.027336860670194002,3.0
+0.05714285714285714,"frozenset({'Agile', 'ETL', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Tech Lead'})",3,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Amazon Redshift', 'Data Engineer'})",3,,,0.09104477611940298,3.0,0.05790711346266902,3.0
+0.05714285714285714,frozenset({'AWS DevOps'}),1,0.16036308623298035,1.0,0.029850746268656716,1.0,0.024103468547912992,1.0
+0.05714285714285714,"frozenset({'Spark', 'Amazon Redshift', 'Data Engineer'})",3,0.08925869894099848,3.0,0.17313432835820897,3.0,0.12580834803057026,3.0
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Amazon Redshift', 'ETL'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Amazon Redshift', 'ETL', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Amazon Redshift', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Amazon Redshift', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Data Engineer', 'Agile', 'Spark', 'Amazon Redshift'})",5,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Data Warehousing', 'Agile', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'ETL', 'Data Engineer', 'Agile', 'Spark', 'Amazon Redshift'})",5,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'ETL', 'Agile', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'ETL', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",6,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Data Warehousing', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",6,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Data Warehousing', 'ETL', 'Agile', 'Data Engineer', 'Tech Lead'})",6,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Data Engineer', 'Agile', 'Spark', 'Amazon Redshift'})",6,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Spark', 'Amazon Redshift'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'Spark', 'Amazon Redshift', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Data Engineer', 'ETL', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'ETL', 'Agile', 'Spark', 'Amazon Redshift', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Spark', 'Data Engineer'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Spark', 'Amazon Redshift', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'ETL', 'Agile', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Agile', 'Spark', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Data Engineer', 'Spark', 'Amazon Redshift'})",5,,,,,,
+0.05714285714285714,"frozenset({'Amazon Redshift', 'ETL', 'Spark', 'Data Engineer', 'Tech Lead'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'ETL', 'Data Engineer', 'Agile', 'Amazon Redshift'})",5,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'ETL', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Spark', 'Data Engineer', 'ETL', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Data Engineer', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'Data Engineer', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'Data Engineer', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Spark', 'Data Engineer', 'ETL'})",4,,,,,,
+0.05714285714285714,"frozenset({'Agile', 'Data Engineer', 'ETL', 'Tech Lead'})",4,,,,,,
+0.05714285714285714,"frozenset({'SQL', 'Power BI'})",2,,,0.3253731343283582,2.0,0.2674897119341564,2.0
+0.05714285714285714,"frozenset({'Data Warehousing', 'Spark', 'ETL', 'Agile'})",4,,,,,,
+0.05714285714285714,"frozenset({'Data Warehousing', 'Agile', 'ETL', 'Tech Lead'})",4,,,,,,
