@@ -12,7 +12,7 @@ import os
 pd.set_option('display.float_format', '{:.2f}'.format)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def load_data():
     data_url = "http://lib.stat.cmu.edu/datasets/boston"
     raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
