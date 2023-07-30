@@ -6,7 +6,7 @@ import shap
 import matplotlib.pyplot as plt
 import pickle
 import os
-import plotly.express as px
+#import plotly.express as px
 
 
 pd.set_option('display.float_format', '{:.2f}'.format)
@@ -138,9 +138,9 @@ def main():
     fig = shap.plots.scatter(shap_values[:,col], color = shap_values)
     st.pyplot(fig)
 
-    fig = px.scatter(x=X[col],y=y, labels={'x':col, 'y':'Target Value'})
+    #fig = px.scatter(x=X[col],y=y, labels={'x':col, 'y':'Target Value'})
     #trendline='ols',
-    st.plotly_chart(fig)
+    #st.plotly_chart(fig)
 
 
 
