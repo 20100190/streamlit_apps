@@ -3,43 +3,47 @@ import pandas as pd
 import numpy as np
 import xgboost
 import shap
-import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
-
+import pickle
+import os
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-
-def st_shap(plot, height=None):
-    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-    components.html(shap_html, height=height)
-
+@st.cache
 def load_data():
     data_url = "http://lib.stat.cmu.edu/datasets/boston"
     raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
     data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
     target = raw_df.values[1::2, 2]
-    return data, target
+
+    X = pd.DataFrame(data, columns=["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"])
+    
+    return X, target
+
+def load_model():
+    with open('./xgboost_model.pickle', 'rb') as f:
+        model = pickle.load(f)
+    return model
 
 def main():
     st.title("Boston Housing Dataset Exploration")
 
     # Load the data
-    data, target = load_data()
+    X, y = load_data()
+    model = load_model()
 
     # Display some basic information about the dataset
-    st.write("Number of samples:", data.shape[0])
-    st.write("Number of features:", data.shape[1])
+    st.write("Number of samples:", X.shape[0])
+    st.write("Number of features:", X.shape[1])
 
     # Display the dataset
     st.subheader("Dataset")
-    X = pd.DataFrame(data, columns=["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"])
-    y = target
+    
     st.dataframe(X.head())
 
 
-    model = xgboost.XGBRegressor().fit(X, y)
+    model = load_model()
 
     # explain the model's predictions using SHAP
     # (same syntax works for LightGBM, CatBoost, scikit-learn, transformers, Spark, etc.)
