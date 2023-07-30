@@ -15,7 +15,7 @@ from datetime import datetime
 pd.set_option('display.float_format', '{:.2f}'.format)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-@st.cache_data
+@st.cache(allow_output_mutation=True)
 def load_data():
     data_url = "http://lib.stat.cmu.edu/datasets/boston"
     raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
@@ -26,6 +26,11 @@ def load_data():
     selected_cols = ['LSTAT', 'RM', 'AGE', 'CRIM', 'CHAS']
     
     return X[selected_cols], target
+
+def load_model():
+    with open('./House_Price_Shaply_v2/xgboost_model.pickle', 'rb') as f:
+        model = pickle.load(f)
+    return model
 
 def sheet_url():
     scope = [
@@ -47,11 +52,6 @@ def sheet_url():
     worksheet = sheet.get_worksheet(0)
 
     return worksheet
-
-def load_model():
-    with open('./House_Price_Shaply_v2/xgboost_model.pickle', 'rb') as f:
-        model = pickle.load(f)
-    return model
 
 def main():
     st.title("Boston Housing Dataset Price Prediction")
@@ -129,6 +129,7 @@ def main():
 
     input_df = pd.DataFrame([user_input3])
     shap_values_top5 = explainer(input_df)
+    predict_value = model.predict(input_df)[0]
 
     #st.write('New Impact')
 
@@ -167,10 +168,13 @@ def main():
     #st.plotly_chart(fig)
 
     worksheet = sheet_url()
+
     current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     user_values = [current_timestamp, LSTAT, RM, AGE, CRIM, CHAS, float(predict_value)]
     worksheet.append_row(user_values)
 
+
+    
 
 
 if __name__ == "__main__":
