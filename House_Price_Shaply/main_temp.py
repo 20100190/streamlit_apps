@@ -1,3 +1,4 @@
+
 import os
 import streamlit as st
 import plotly.express as px
@@ -39,6 +40,8 @@ def main():
 
     # Get the file path for data
     data_path = os.path.join(DATA_DIR, DATA_FILE)
+
+    data_path = './House_Price_Shaply/data/' + DATA_FILE
 
     # Load and process data
     data = load_data(data_path)
@@ -107,3 +110,29 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+import streamlit as st
+from google.oauth2 import service_account
+from gsheetsdb import connect
+import pandas as pd
+# Create a connection object.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+    ],
+)
+conn = connect(credentials=credentials)
+
+# Perform SQL query on the Google Sheet.
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache
+def run_query(query):
+    rows = conn.execute(query, headers=0)
+    return rows
+
+sheet_url = st.secrets["private_gsheets_url"]
+rows = run_query(f'SELECT * FROM "{sheet_url}"')
+
+st.write(pd.DataFrame(rows))
