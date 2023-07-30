@@ -10,7 +10,7 @@ import os
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_data():
     data_url = "http://lib.stat.cmu.edu/datasets/boston"
     raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
@@ -28,6 +28,14 @@ def load_model():
 
 def main():
     st.title("Boston Housing Dataset Exploration")
+
+
+    # Get the current directory
+    current_directory = os.getcwd()
+
+    # Get all items (files and directories) in the current current_directory
+    items = os.listdir(current_directory)
+    [st.write(val) for val in items]
 
     # Load the data
     X, y = load_data()
