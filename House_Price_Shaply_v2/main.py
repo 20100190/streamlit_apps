@@ -129,6 +129,7 @@ def main():
 
     input_df = pd.DataFrame([user_input3])
     shap_values_top5 = explainer(input_df)
+    predict_value = model.predict(input_df)[0]
 
     #st.write('New Impact')
 
