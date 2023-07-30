@@ -22,7 +22,7 @@ def load_data():
     return X, target
 
 def load_model():
-    with open('./xgboost_model.pickle', 'rb') as f:
+    with open('./House_Price_Shaply_v2/xgboost_model.pickle', 'rb') as f:
         model = pickle.load(f)
     return model
 
