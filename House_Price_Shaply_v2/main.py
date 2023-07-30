@@ -6,8 +6,10 @@ import shap
 import matplotlib.pyplot as plt
 import pickle
 import os
+import plotly.express as px
 
 
+pd.set_option('display.float_format', '{:.2f}'.format)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 @st.cache(allow_output_mutation=True)
@@ -18,8 +20,9 @@ def load_data():
     target = raw_df.values[1::2, 2]
 
     X = pd.DataFrame(data, columns=["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"])
+    selected_cols = ['LSTAT', 'RM', 'AGE', 'CRIM', 'CHAS']
     
-    return X, target
+    return X[selected_cols], target
 
 def load_model():
     with open('./House_Price_Shaply_v2/xgboost_model.pickle', 'rb') as f:
@@ -27,28 +30,45 @@ def load_model():
     return model
 
 def main():
-    st.title("Boston Housing Dataset Exploration")
+    st.title("Boston Housing Dataset Price Prediction")
+
+    data_description = """
+    - ***LSTAT***: % lower status of the population
+    - ***CRIM***: per capita crime rate by town
+    - ***CHAS***: Charles River dummy variable (1 if tract bounds river; 0 otherwise)
+    - ***RM***: average number of rooms per dwelling
+    - ***AGE***: proportion of owner-occupied units built prior to 1940
+    """
+
+    st.markdown(data_description)
+
 
 
     # Get the current directory
-    current_directory = os.getcwd()
-
+    # current_directory = os.getcwd()
     # Get all items (files and directories) in the current current_directory
-    items = os.listdir(current_directory)
-    [st.write(val) for val in items]
+    #items = os.listdir(current_directory)
+    #[st.write(val) for val in items]
 
     # Load the data
     X, y = load_data()
     model = load_model()
 
-    # Display some basic information about the dataset
-    st.write("Number of samples:", X.shape[0])
-    st.write("Number of features:", X.shape[1])
-
+    col1, col2 = st.columns(2)
     # Display the dataset
-    st.subheader("Dataset")
+    with col1:
+        st.subheader("Example Data")
     
-    st.dataframe(X.head())
+        st.write(X.head(8).style\
+                        .format("{:.2f}", na_rep=0, subset=['LSTAT', 'AGE', 'RM', 'CRIM'])\
+                        .format("{:.0f}", na_rep=0, subset=['CHAS'])\
+                        .hide(axis='index'))
+    with col2:
+        st.subheader("Data Statistics")
+        st.write(X.describe().style\
+                    .format("{:.1f}", na_rep=0, subset=['LSTAT', 'AGE', 'RM', 'CRIM'])\
+                    .format("{:.1f}", na_rep=0, subset=['CHAS'])\
+                    .hide(axis='index'))
 
 
     model = load_model()
@@ -61,28 +81,68 @@ def main():
     # visualize the first prediction's explanation
     #st.components.v1.html(shap.plots.waterfall(shap_values[0]))
 
-    st.pyplot(shap.plots.force(shap_values[0],matplotlib=True))
+    #st.pyplot(shap.plots.force(shap_values[0],matplotlib=True))
+
+    #CRIM = st.number_input("Per capita crime rate (CRIM):", min_value=0.0, value=0.5)
+    #ZN = st.number_input("Proportion of residential land zoned for lots over 25,000 sq.ft. (ZN):", min_value=0.0, value=0.5)
+    #INDUS = st.number_input("Proportion of non-retail business acres per town (INDUS):", min_value=0.0, value=0.5)
+    
+    user_input3 = {}
+    CHAS = st.sidebar.selectbox("Charles River dummy variable (CHAS):", [0, 1], index=1)
+    CRIM = st.sidebar.number_input("Per capita crime rate (CRIM):", min_value=0.0, value=0.5)
+    LSTAT = st.sidebar.number_input("% Lower status of the population (LSTAT):", min_value=0.0, value=10.0)
+    RM = st.sidebar.number_input("Average number of rooms per dwelling (RM):", min_value=0.0, value=10.0)
+    AGE = st.sidebar.number_input("Proportion of owner-occupied units (AGE):", min_value=0.0, value=10.0)
+
+    user_input3 = {
+                    'LSTAT':LSTAT,
+                    'RM':RM,
+                    'AGE':AGE,
+                    'CRIM':CRIM,
+                    'CHAS':CHAS
+                    }
 
 
-    # Create a text input field
-    user_input = st.text_input("Enter your First feature here integet:")
+    input_df = pd.DataFrame([user_input3])
+    shap_values_top5 = explainer(input_df)
 
-    # Display the input value
-    st.write("You entered:", user_input)
+    #st.write('New Impact')
 
-    X.iloc[0,-1] = int(user_input)
+    st.subheader("Comparing Shap Vlaue and Prediction of Two Examples")
 
-    shap_values_top5 = explainer(X.iloc[0:5,:])
-    st.write('New Impact')
-    st.pyplot(shap.plots.force(shap_values_top5[0],matplotlib=True))
+    col1, col2 = st.columns(2)
+    # Add content to the first column (col1)
+    with col1:
+        st.subheader("Randomly Selected")
+        rad_exp = X.iloc[0:1,].to_dict(orient='records')[0]
+        st.write(rad_exp)
+        st.write("Predicted Vlaue : ", model.predict(X.iloc[0:1,])[0])
+        fig = shap.plots.waterfall(shap_values[0])
+        st.pyplot(fig)
 
-    shap.initjs()
-    fig = shap.plots.waterfall(shap_values[0])
+
+    # Add content to the second column (col2)
+    with col2:
+        st.subheader("User Provided")
+        st.write(user_input3)
+        st.write("Predicted Vlaue : ", model.predict(input_df)[0])
+        fig = shap.plots.waterfall(shap_values_top5[0])
+        st.pyplot(fig)
+    
+    #st.pyplot(shap.plots.force(shap_values_top5[0],matplotlib=True))
+    
+    
+
+    st.subheader('Feature Value & Shap Values')
+    col = st.selectbox("Select a column you want to analyze", X.columns, index=2)
+    fig = shap.plots.scatter(shap_values[:,col], color = shap_values)
     st.pyplot(fig)
 
+    fig = px.scatter(x=X[col],y=y, labels={'x':col, 'y':'Target Value'})
+    #trendline='ols',
+    st.plotly_chart(fig)
 
-    #st_shap(shap.plots.waterfall(shap_values[0]))
-    st.write('End of Code')
+
 
 if __name__ == "__main__":
     main()
