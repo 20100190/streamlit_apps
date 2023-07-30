@@ -40,6 +40,8 @@ def main():
     # Get the file path for data
     data_path = os.path.join(DATA_DIR, DATA_FILE)
 
+    data_path = './House_Price_Shaply/data/' + DATA_FILE
+
     # Load and process data
     data = load_data(data_path)
     processed_data = process_data(data)
